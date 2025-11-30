@@ -78,7 +78,7 @@ export default function Footer() {
             </p>
             <p className="text-xs text-charcoal/70 mb-3">
               〒103-0027 東京都中央区日本橋3-14-5 日本橋テラスビル6F<br />
-              代表者: 佐藤 陽介 | 電話: 03-6875-9421 | メール: support@nipstock.com
+              代表者: 佐藤 陽介 | 電話: 03-6875-9421 | メール: support@diagnosis-ai.jp
             </p>
             <p className="text-xs sm:text-sm text-charcoal mb-2 font-medium">
               &copy; {currentYear} All rights reserved.

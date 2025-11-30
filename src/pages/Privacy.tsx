@@ -152,7 +152,7 @@ export default function Privacy() {
                 電話: 03-6875-9421
               </p>
               <p className="text-sm text-gray-700 mb-2">
-                メール: support@nipstock.com
+                メール: support@diagnosis-ai.jp
               </p>
             </div>
           </div>

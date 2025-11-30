@@ -265,7 +265,7 @@ export default function Contact() {
                 <strong>電話番号:</strong> 03-6875-9421
               </p>
               <p className="text-sm text-gray-700 mb-2">
-                <strong>メールアドレス:</strong> support@nipstock.com
+                <strong>メールアドレス:</strong> support@diagnosis-ai.jp
               </p>
             </div>
           </div>

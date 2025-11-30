@@ -65,7 +65,7 @@ export default function CompanyInfo() {
                   <div>
                     <h3 className="text-xl font-bold text-gray-900 mb-3">メールアドレス</h3>
                     <p className="text-gray-700 text-lg leading-relaxed">
-                      support@nipstock.com
+                      support@diagnosis-ai.jp
                     </p>
                   </div>
                 </div>

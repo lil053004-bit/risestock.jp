@@ -250,7 +250,7 @@ export default function SpecifiedCommercialTransactionAct() {
                   <Mail className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
                   <div>
                     <p className="font-semibold text-gray-900 mb-1">メール</p>
-                    <p className="text-blue-600">support@nipstock.com</p>
+                    <p className="text-blue-600">support@diagnosis-ai.jp</p>
                   </div>
                 </div>
                 <Link
