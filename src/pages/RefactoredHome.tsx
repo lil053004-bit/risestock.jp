@@ -206,7 +206,7 @@ export default function RefactoredHome() {
       }
 
       if (!response.ok) {
-        throw new Error('AI分析に失敗しました');
+        throw new Error('情報の取得に失敗しました');
       }
 
       setDiagnosisState('processing');
@@ -304,7 +304,7 @@ export default function RefactoredHome() {
       }
     } catch (err) {
       console.error('Diagnosis error:', err);
-      let errorMessage = '分析中にエラーが発生しました';
+      let errorMessage = '情報取得中にエラーが発生しました';
       let errorDetails = '';
 
       if (err instanceof Error) {
@@ -465,7 +465,7 @@ export default function RefactoredHome() {
                   style={{
                     fontFamily: 'M PLUS Rounded 1c, sans-serif',
                   }}>
-                  あなたのAI株式情報分析ツールです。
+                  株式市場情報を参照できる情報提供サービスです
                 </p>
               </div>
 
@@ -474,8 +474,15 @@ export default function RefactoredHome() {
                   fontFamily: 'M PLUS Rounded 1c, sans-serif',
                   letterSpacing: '0.5px'
                 }}>
-                この株式の市場データを分析
+                株式の公開市場データを確認
               </h1>
+              <div className="mt-4 max-w-2xl mx-auto">
+                <div className="bg-amber-50 border-2 border-amber-300 rounded-xl px-4 py-3">
+                  <p className="text-xs text-amber-900 leading-relaxed text-center" style={{ fontFamily: 'M PLUS Rounded 1c, sans-serif' }}>
+                    <strong>【重要】</strong>本サービスは参考情報の提供のみを目的としており、投資助言・勧誘ではありません。金融商品取引業者ではないため個別の投資助言は行えません。投資判断は必ずご自身の責任で行ってください。株式投資には元本損失のリスクが伴います。
+                  </p>
+                </div>
+              </div>
             </div>
 
             <div className="w-full max-w-2xl space-y-6 flex flex-col items-center">
@@ -505,7 +512,7 @@ export default function RefactoredHome() {
 
                 {diagnosisState === 'error' && (
                   <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-center animate-fadeIn mt-4">
-                    <h3 className="text-lg font-bold text-red-600 mb-2">分析エラー</h3>
+                    <h3 className="text-lg font-bold text-red-600 mb-2">情報取得エラー</h3>
                     <p className="text-charcoal text-sm mb-4 whitespace-pre-line">{error}</p>
                     <button
                       onClick={() => {

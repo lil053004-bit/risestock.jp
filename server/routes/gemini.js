@@ -42,7 +42,7 @@ router.post('/diagnosis', async (req, res) => {
     if (!apiKeysString) {
       console.warn('SILICONFLOW_API_KEY not configured, using mock response');
 
-      const mockAnalysis = `【${stockData.name}（${code}）の市場分析】\n\n現在の株価は${stockData.price}円で、前日比${stockData.change}円（${stockData.changePercent}%）の変動となっています。\n\n■ テクニカル指標\nPER: ${stockData.per}倍\nPBR: ${stockData.pbr}倍\n配当利回り: ${stockData.dividend}%\n\n■ 業種分析\n${stockData.industry}セクターに属しており、時価総額は${stockData.marketCap}億円です。\n\n■ 市場動向\n本銘柄は現在の市場環境において、一定の注目を集めています。テクニカル指標から見ると、${parseFloat(stockData.per) > 15 ? "やや割高" : "適正水準"}の評価となっています。\n\n※本分析は情報提供のみを目的としており、投資の推奨や助言ではありません。投資判断は必ずご自身の責任で行ってください。`;
+      const mockAnalysis = `【${stockData.name}（${code}）の公開市場データ】\n\n現在の株価は${stockData.price}円で、前日比${stockData.change}円（${stockData.changePercent}%）となっています。\n\n■ 公開されている指標\nPER: ${stockData.per}倍\nPBR: ${stockData.pbr}倍\n配当利回り: ${stockData.dividend}%\n\n■ 基本情報\n${stockData.industry}セクターに属しており、時価総額は${stockData.marketCap}億円です。\n\n■ データ参照情報\n上記は公開されている市場データの参照情報です。数値は参考値としてご活用ください。\n\n━━━━━━━━━━━━━━━━━━\n【重要な免責事項】\n本情報は参考情報の提供のみを目的としており、投資助言・推奨・勧誘ではありません。金融商品取引業者ではないため個別の投資助言は行えません。投資判断は必ずご自身の責任で行ってください。株式投資には価格変動リスクがあり、元本を失う可能性があります。`;
 
       await saveDiagnosisToCache(code, stockData, mockAnalysis, 'mock');
       const responseTime = Date.now() - startTime;
@@ -59,9 +59,15 @@ router.post('/diagnosis', async (req, res) => {
     let prompt;
 
     if (stockData) {
-      prompt = `あなたは日本の株式市場アナリストです。以下の株式データに基づいて診断結果を日本語で作成してください。
+      prompt = `あなたは日本の株式市場の情報提供アシスタントです。以下の公開市場データに基づいて、客観的な参考情報を日本語で作成してください。
 
-株式情報：
+重要な制約事項：
+- これは情報提供サービスであり、投資助言・推奨・勧誘ではありません
+- 「おすすめ」「買い」「売り」などの投資判断を示唆する表現は一切使用しないでください
+- 「予測」「予想」「確実」「必ず」などの将来を断定する表現は使用しないでください
+- あくまで過去データと現在の数値の客観的な説明に留めてください
+
+公開株式データ：
 銘柄名: ${stockData.name}
 コード: ${code}
 現在株価: ${stockData.price}円
@@ -74,20 +80,21 @@ PBR: ${stockData.pbr}倍
 
 出力要求：
 1. 以下の形式に従って出力してください
-2. 【注目話題】の部分では、株式データを分析して15-20字の簡潔で魅力的な日本語フレーズを生成してください（業種トレンド、株価変動、バリュエーション、配当などを考慮）
-3. 「メッセージを送信した瞬間にAI診断が始まり、最新レポートが即座に届きます。」という文で必ず終了してください
-4. その文の後に追加のテキストは一切出力しないでください
-5. "=== 出力開始 ==="などの指令マークは出力しないでください
+2. 【市場データ概要】の部分では、株式データを要約して15-20字の簡潔な日本語フレーズを生成してください（業種、株価水準、バリュエーションなどの客観的事実のみ）
+3. 最後に必ず以下の免責事項を含めてください
+4. 投資判断を促す表現は一切使用しないでください
 
 出力形式：
 
-現在の株価は ${stockData.price} 円、前日比 ${stockData.change} 円（${stockData.changePercent}）
+現在の株価は ${stockData.price} 円、前日比 ${stockData.change} 円（${stockData.changePercent}）となっています。
 
-【注目話題】ここに15-20字の魅力的なフレーズを生成
+【市場データ概要】ここに15-20字の客観的なフレーズを生成
 
-追加が完了しましたら、詳細な診断レポートを受け取るために、銘柄コード「${stockData.name}」または「${code}」と送信してください。
+追加が完了しましたら、詳細な参考情報を受け取るために、銘柄コード「${stockData.name}」または「${code}」と送信してください。
 
-メッセージを送信した瞬間にAI診断が始まり、最新レポートが即座に届きます。`;
+━━━━━━━━━━━━━━━━━━
+【重要な免責事項】
+本情報は参考情報の提供のみを目的としており、投資助言・推奨・勧誘ではありません。投資判断は必ずご自身の責任で行ってください。株式投資には価格変動リスクがあり、元本を失う可能性があります。過去のデータは将来の成果を保証するものではありません。`;
     } else {
       prompt = `あなたは日本の株式市場アナリストです。ユーザーが入力したコード「${code}」について診断を行います。
 

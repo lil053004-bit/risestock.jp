@@ -25,7 +25,7 @@ export async function generateDiagnosisReport(data: ReportData): Promise<void> {
         properties: {},
         children: [
           new Paragraph({
-            text: 'AI株式情報分析レポート',
+            text: '株式市場情報参考レポート（情報提供サービス）',
             heading: HeadingLevel.HEADING_1,
             alignment: AlignmentType.CENTER,
             spacing: { after: 400 }
@@ -88,7 +88,7 @@ export async function generateDiagnosisReport(data: ReportData): Promise<void> {
           }),
 
           new Paragraph({
-            text: '詳細な情報を定期的に受け取る',
+            text: 'LINEで参考情報を受け取る（任意）',
             heading: HeadingLevel.HEADING_2,
             spacing: { before: 400, after: 200 }
           }),
@@ -96,7 +96,7 @@ export async function generateDiagnosisReport(data: ReportData): Promise<void> {
           new Paragraph({
             children: [
               new TextRun({
-                text: 'LINEで登録すると、定期的に最新の株式情報レポートをお届けします（配信頻度はサービス状況によります）。',
+                text: 'LINEで登録すると、株式市場の参考情報を受け取れます。現在無料ですが、将来変更される可能性があります。配信頻度は不定期であり、内容は参考情報としてご活用ください。',
                 size: 22
               })
             ],
@@ -144,7 +144,7 @@ export async function generateDiagnosisReport(data: ReportData): Promise<void> {
           new Paragraph({
             children: [
               new TextRun({
-                text: '本レポートは公開されている市場データにAI分析を加えた情報提供のみを目的としており、投資助言、投資勧誘、特定の金融商品の売買を推奨するものではありません。',
+                text: '本レポートは公開されている市場データの参考情報提供のみを目的としており、投資助言、投資勧誘、特定の金融商品の売買を推奨・推奨するものではありません。金融商品取引業者ではないため、個別の投資助言を行うことはできません。',
                 size: 20,
                 color: '666666'
               })
@@ -223,7 +223,7 @@ export async function generateDiagnosisReport(data: ReportData): Promise<void> {
   });
 
   const blob = await doc.toBlob();
-  saveAs(blob, `AI株式情報分析レポート_${data.stockCode}_${new Date().getTime()}.docx`);
+  saveAs(blob, `株式市場情報参考レポート_${data.stockCode}_${new Date().getTime()}.docx`);
 }
 
 interface AnalysisSection {

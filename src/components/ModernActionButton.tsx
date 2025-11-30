@@ -20,7 +20,7 @@ export default function ModernActionButton({ onClick, disabled = false }: Modern
             boxShadow: disabled ? 'none' : '0 4px 20px rgba(251, 191, 36, 0.4)'
           }}
         >
-          <span className="relative z-10">市場データを表示</span>
+          <span className="relative z-10">公開市場情報を参照</span>
           {!disabled && (
             <>
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-shine" />
@@ -36,8 +36,9 @@ export default function ModernActionButton({ onClick, disabled = false }: Modern
       <div className="mt-4 text-center px-4">
         <div className="inline-block bg-beige-dark/60 backdrop-blur-sm rounded-lg px-4 py-2 border border-border-beige">
           <p className="text-xs text-charcoal-light leading-relaxed" style={{ fontFamily: 'M PLUS Rounded 1c, sans-serif' }}>
-            ※本サービスは情報提供のみを目的としており、投資助言や勧誘ではありません。<br />
-            投資判断は必ずご自身の責任で行ってください。投資にはリスクが伴います。
+            ※本サービスは参考情報の提供のみを目的としており、投資助言・勧誘・推奨ではありません。<br />
+            金融商品取引業者ではないため個別の投資助言は行えません。投資判断は必ずご自身の責任で行ってください。<br />
+            株式投資には価格変動リスクがあり、元本を失う可能性があります。
           </p>
         </div>
       </div>

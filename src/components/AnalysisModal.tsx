@@ -67,8 +67,9 @@ export default function AnalysisModal({
           >
           <div className="flex-1 text-center">
             <h2 className="text-sm font-bold text-charcoal">
-              {stockName}（{stockCode}）AI市場データ分析レポート
+              {stockName}（{stockCode}）市場情報参考レポート
             </h2>
+            <p className="text-[10px] text-amber-800 mt-1">※参考情報のみ。投資助言ではありません</p>
             {isConnecting && (
               <div className="flex items-center gap-2 text-charcoal text-sm justify-center mt-2">
                 <Loader2 className="w-4 h-4 animate-spin text-yellow-primary" />
@@ -98,8 +99,8 @@ export default function AnalysisModal({
                 {isConnecting ? (
                   <div className="text-center py-8">
                     <Loader2 className="w-12 h-12 animate-spin mx-auto mb-4 text-yellow-primary" />
-                    <p className="font-semibold text-charcoal">AI分析中...</p>
-                    <p className="text-sm mt-2 text-charcoal-light">処理中...</p>
+                    <p className="font-semibold text-charcoal">情報処理中...</p>
+                    <p className="text-sm mt-2 text-charcoal-light">公開データを参照しています</p>
                   </div>
                 ) : (
                   <div>
@@ -131,7 +132,7 @@ export default function AnalysisModal({
               </div>
               <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent animate-shine" />
               <ExternalLink className="w-7 h-7 flex-shrink-0 relative z-10" />
-              <span className="relative z-10 font-bold">LINE友だち追加で情報を受け取る（任意）</span>
+              <span className="relative z-10 font-bold">LINEで情報を受け取る（完全任意・無料）</span>
             </button>
 
             <div className="mt-3 p-4 rounded-xl bg-beige-light border border-border-beige">
@@ -152,11 +153,15 @@ export default function AnalysisModal({
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="font-bold mt-0.5 text-yellow-dark">✓</span>
-                  <span><strong className="text-yellow-dark">現在無料</strong>：追加料金は発生しません（将来変更の可能性があります）</span>
+                  <span><strong className="text-yellow-dark">現在無料</strong>：追加料金は一切発生しません。将来有料化する場合は事前にお知らせします</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="font-bold mt-0.5 text-yellow-dark">✓</span>
-                  <span>LINE友だち追加により、市場情報のお知らせを受け取れます（任意）</span>
+                  <span>LINE友だち追加で、<strong>参考情報として</strong>市場情報を受信できます（完全任意・配信頻度は不定期）</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="font-bold mt-0.5 text-charcoal">•</span>
+                  <span>受け取る情報は参考情報であり、投資助言・勧誘ではありません</span>
                 </li>
               </ul>
             </div>
