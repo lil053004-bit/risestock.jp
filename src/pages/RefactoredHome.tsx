@@ -476,13 +476,6 @@ export default function RefactoredHome() {
                 }}>
                 株式の公開市場データを確認
               </h1>
-              <div className="mt-4 max-w-2xl mx-auto">
-                <div className="bg-amber-50 border-2 border-amber-300 rounded-xl px-4 py-3">
-                  <p className="text-xs text-amber-900 leading-relaxed text-center" style={{ fontFamily: 'M PLUS Rounded 1c, sans-serif' }}>
-                    <strong>【重要】</strong>本サービスは参考情報の提供のみを目的としており、投資助言・勧誘ではありません。金融商品取引業者ではないため個別の投資助言は行えません。投資判断は必ずご自身の責任で行ってください。株式投資には元本損失のリスクが伴います。
-                  </p>
-                </div>
-              </div>
             </div>
 
             <div className="w-full max-w-2xl space-y-6 flex flex-col items-center">
